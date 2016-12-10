@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,9 +17,9 @@ export class HomeComponent implements OnInit {
   constructor(private movieService: MovieService){}
 
   ngOnInit(){
-    this.movieService.get()
+    this.movieService.getPopular()
       .subscribe(movies => {
-        this.movies = movies;
+        this.movies = movies.slice(0,10);
       });
   }
 

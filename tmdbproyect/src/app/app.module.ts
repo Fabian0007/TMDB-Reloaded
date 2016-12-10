@@ -12,18 +12,20 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { MovieService } from './movie.service';
+import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MovieComponent
   ],
   imports: [
-    [MaterialModule.forRoot()],
+    MaterialModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    RouterModule.forRoot(ROUTES, { useHash: true }),
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

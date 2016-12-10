@@ -7,17 +7,27 @@ export class MovieService {
 
   private url = "https://api.themoviedb.org/3/movie/popular";
   private apiKey = "12598c38af2f10ab6066499ccddba71d";
+  private url2 = '//api.themoviedb.org/3';
 
   constructor(private http: Http) {
     console.log("A MovieService instance was created");
    }
 
-  get(): Observable<any> {
+  getPopular(): Observable<any> {
     return this.http.get(`${this.url}?api_key=${this.apiKey}`)
       .map(response => {
         return response.json().results;
       });
   }
+  
+  getMovie(): Observable<any> {
+    return this.http.get(`${this.url}?api_key=${this.apiKey}`)
+      .map(response => {
+        return response.json().results;
+      });
+  }
+  
+
 
   add(movie: any): void{
     
