@@ -1,0 +1,10 @@
+
+
+<md-grid-list cols="4" class="total">
+    <md-grid-tile *ngFor="let movie of movies" >
+        <a href="#/movie/{{ movie.id }}" title="{{ movie.title }}" ng-if="movie.poster_path">
+            <img id="image" src="{{getUrl(movie.poster_path)}}"/>
+        </a>
+         <md-grid-tile-footer><h3>{{movie.title}}</h3></md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
