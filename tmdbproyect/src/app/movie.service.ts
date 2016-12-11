@@ -57,22 +57,14 @@ export class MovieService {
       });
   }
   
-  getMovie(): Observable<any> {
-    var request =`${this.url}?api_key=${this.apiKey}`;
+  getMovie(id:number): Observable<any> {
+    var request =`${this.url}/movie/${id}?api_key=${this.apiKey}&append_to_response=alternative_titles,credits,releases,videos,similar,reviews,images`;
+    console.log(request);
     return this.http.get(request)
       .map(response => {
-        return response.json().results;
+        console.log(response);
+        return response.json();
       });
-  }
-  
-
-
-  add(movie: any): void{
-    
-  }
-
-  delete(movie) {
-
   }
 
 }

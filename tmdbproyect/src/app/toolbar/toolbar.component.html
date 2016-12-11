@@ -1,12 +1,16 @@
 <div>
 <md-toolbar color= "primary">
     <button md-button id="principal" (click)="goToHome();">
-            <md-icon class="md-24" color="accent">movie</md-icon>
+        <md-icon class="md-24" color="accent">movie</md-icon>
              TMDB Reloaded 
     </button>
-        <button md-button color= "accent">
-            <md-icon class="md-24">home</md-icon>
-        </button>
-        
+    
+    <span class="example-fill-remaining-space"></span>
+
+    <app-search></app-search>    
+    
+    <md-icon class="md-24" color="accent">search</md-icon>
+
+
 </md-toolbar>
 </div>

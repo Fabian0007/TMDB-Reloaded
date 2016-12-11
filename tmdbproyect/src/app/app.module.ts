@@ -19,6 +19,7 @@ import { TopmoviesComponent } from './topmovies/topmovies.component';
 import { LatestmoviesComponent } from './latestmovies/latestmovies.component';
 import { IntheatersComponent } from './intheaters/intheaters.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UpcomingComponent } from './upcoming/upcoming.component';
     TopmoviesComponent,
     LatestmoviesComponent,
     IntheatersComponent,
-    UpcomingComponent
+    UpcomingComponent,
+    SearchComponent
   ],
   imports: [
     MaterialModule.forRoot(),

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../movie.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieComponent implements OnInit {
 
-  constructor() { }
+  baseUrl = "http://image.tmdb.org/t/p/w300/";
+  details = {};
+  private sub:any;
 
-  ngOnInit() {
+  constructor(private movieService: MovieService, private route: ActivatedRoute,
+  		private router: Router){}
+
+  ngOnInit(){
+    this.sub = this.route.params.subscribe(params => {
+      let id = params['id'];
+      this.movieService.getMovie(id)
+      .subscribe(details => {
+        console.log(details);
+        this.details = details;
+      });
+    });
   }
+
+  getUrl(src: string): string {
+    return `${this.baseUrl}${src}`;
+  }
+  
+
 
 }

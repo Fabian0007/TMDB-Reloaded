@@ -1,3 +1,41 @@
-<p>
-  movie works!
-</p>
+<app-toolbar></app-toolbar>
+
+<md-card>
+   <md-card-title-group>
+      <img src="{{getUrl(details.poster_path)}}">
+      <md-card-title>{{ details.title }}</md-card-title>
+      <md-card-subtitle>
+          <h3 ng-if="details.tagline">{{details.tagline }}</h3>
+            <br />
+            <span ng-if="details.overview">
+                {{ details.overview }}
+            </span>
+            <br />
+            <div class="sub-details row table-row" style="margin: 20px;">
+                <div class="col-md-6">
+                    <div class="detail">
+                        Release Date {{ details.release_date | date }}
+                    </div>
+                    <div class="detail">
+                        Running Time {{ details.runtime }} minutes
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detail">
+                        Budget ${{ details.budget | number }} USD
+                    </div>
+                    <div class="detail">
+                        Revenue ${{ details.revenue | number }} USD
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span *ngFor="let genre of details.genres ">
+                    <strong style="border: 1pcx solid #dddddd; margin: 5px; padding: 2px; background-color: #eeeeee;"> {{ genre.name }} </strong>
+                </span>
+                <br />
+                <span ng-if="details.homepage"><a href="{{details.homepage }}" target=_new>{{details.homepage }}</a></span>
+            </div>
+      </md-card-subtitle>
+   </md-card-title-group>
+</md-card>
