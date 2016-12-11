@@ -13,12 +13,24 @@ import { HomeComponent } from './home/home.component';
 
 import { MovieService } from './movie.service';
 import { MovieComponent } from './movie/movie.component';
+import { PopularmoviesComponent } from './popularmovies/popularmovies.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { TopmoviesComponent } from './topmovies/topmovies.component';
+import { LatestmoviesComponent } from './latestmovies/latestmovies.component';
+import { IntheatersComponent } from './intheaters/intheaters.component';
+import { UpcomingComponent } from './upcoming/upcoming.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MovieComponent
+    MovieComponent,
+    PopularmoviesComponent,
+    ToolbarComponent,
+    TopmoviesComponent,
+    LatestmoviesComponent,
+    IntheatersComponent,
+    UpcomingComponent
   ],
   imports: [
     MaterialModule.forRoot(),
