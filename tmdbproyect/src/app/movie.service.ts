@@ -62,7 +62,6 @@ export class MovieService {
     console.log(request);
     return this.http.get(request)
       .map(response => {
-        console.log(response);
         return response.json();
       });
   }
