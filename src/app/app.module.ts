@@ -24,6 +24,8 @@ import { MovietrailerComponent } from './movietrailer/movietrailer.component';
 import { MoviecastComponent } from './moviecast/moviecast.component';
 import { MoviecrewComponent } from './moviecrew/moviecrew.component';
 import { PersonComponent } from './person/person.component';
+import { PersoncastComponent } from './personcast/personcast.component';
+import { PersoncrewComponent } from './personcrew/personcrew.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { PersonComponent } from './person/person.component';
     MovietrailerComponent,
     MoviecastComponent,
     MoviecrewComponent,
-    PersonComponent
+    PersonComponent,
+    PersoncastComponent,
+    PersoncrewComponent
   ],
   imports: [
     MaterialModule.forRoot(),

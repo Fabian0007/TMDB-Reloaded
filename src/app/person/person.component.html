@@ -37,6 +37,12 @@
                 </div>
             </md-card>
             
+            <div *ngIf="details.credits">
+                <app-personcast [credits]="details.credits.cast"></app-personcast>
+            </div>
+            <div *ngIf="details.credits">
+                <app-personcrew [credits]="details.credits.crew"></app-personcrew>
+            </div>
 
         </md-card-subtitle>
    </md-card-title-group>
