@@ -18,40 +18,39 @@
 
 <md-card>
     <md-card-title-group>
-        
         <img class="image" src="{{getUrl(details.poster_path)}}">
-
         <md-card-subtitle>
             <md-card>
-                <span ng-if="details.overview">
+                <span *ngIf="details.overview">
                     {{ details.overview }}
                 </span>
             </md-card>
 
             <md-card>
-                <div>
+                <div *ngIf="details.release_date">
                     <md-icon class="icons">visibility</md-icon>
-                    Release Date {{ details.release_date | date }}
+                    Release Date: {{ details.release_date | date }}
                 </div>
-                <div>
+                <div *ngIf="details.runtime">
                     <md-icon class="icons">access_time</md-icon>
-                    Running Time {{ details.runtime }} minutes
+                    Running Time: {{ details.runtime }} minutes
                 </div>
-                <div class="detail">
+                <div *ngIf="details.budget">
                     <md-icon class="icons">attach_money</md-icon>
-                    Budget ${{ details.budget | number }} USD
+                    Budget: ${{ details.budget | number }} USD
                 </div>
-                <div class="detail">
+                <div *ngIf="details.revenue">
                     <md-icon class="icons">attach_money</md-icon>
-                    Revenue ${{ details.revenue | number }} USD
+                    Revenue: ${{ details.revenue | number }} USD
                 </div>
-                
             </md-card>
             
             <md-card>
                 <h2>Genres</h2>
                 <span *ngFor="let genre of details.genres ">
-                    <strong style="border: 1pcx solid #dddddd; margin: 5px; padding: 2px; background-color: #eeeeee;"> {{ genre.name }} </strong>
+                    <button md-button id="buttongenre" >
+                        {{ genre.name }}
+                    </button>
                 </span>
             </md-card>
             
@@ -62,7 +61,6 @@
             <div *ngIf="details.credits">
                 <app-moviecrew [credits]="details.credits.crew"></app-moviecrew>
             </div>
-           
-      </md-card-subtitle>
+        </md-card-subtitle>
    </md-card-title-group>
 </md-card>

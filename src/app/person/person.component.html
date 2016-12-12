@@ -1,0 +1,43 @@
+<app-toolbar></app-toolbar>
+<md-card>
+    <md-card-content>
+       <h1 id="subprincipal"> {{ details.name }} </h1> 
+    </md-card-content>
+</md-card>
+
+
+
+<md-card>
+    <md-card-title-group>
+        <img class="image" src="{{getUrl(details.profile_path)}}">
+        <md-card-subtitle>
+            <md-card>
+                <span *ngIf="details.biography">
+                    {{ details.biography }}
+                </span>
+            </md-card>
+
+            <md-card>
+                <div *ngIf="details.birthday">
+                    <md-icon class="icons">visibility</md-icon>
+                    Birth: {{ details.birthday | date }}
+                </div>
+                <div *ngIf="details.deathday">
+                    <md-icon class="icons">access_time</md-icon>
+                    Death: {{ details.deathday | date}}
+                </div>
+                <div *ngIf="details.place_of_birth">
+                    <md-icon class="icons">access_time</md-icon>
+                    Place of Birth: {{ details.place_of_birth}}
+                </div>
+                
+                <div *ngIf="details.homepage">
+                    <md-icon class="icons">home</md-icon>
+                    Homepage: <a href="{{details.homepage }}" target=_new>{{details.homepage }}</a>
+                </div>
+            </md-card>
+            
+
+        </md-card-subtitle>
+   </md-card-title-group>
+</md-card>

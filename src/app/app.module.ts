@@ -23,6 +23,7 @@ import { SearchComponent } from './search/search.component';
 import { MovietrailerComponent } from './movietrailer/movietrailer.component';
 import { MoviecastComponent } from './moviecast/moviecast.component';
 import { MoviecrewComponent } from './moviecrew/moviecrew.component';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MoviecrewComponent } from './moviecrew/moviecrew.component';
     SearchComponent,
     MovietrailerComponent,
     MoviecastComponent,
-    MoviecrewComponent
+    MoviecrewComponent,
+    PersonComponent
   ],
   imports: [
     MaterialModule.forRoot(),

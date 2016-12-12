@@ -4,12 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css']
+  selector: 'app-person',
+  templateUrl: './person.component.html',
+  styleUrls: ['./person.component.css']
 })
-export class MovieComponent implements OnInit {
-
+export class PersonComponent implements OnInit {
   baseUrl = "http://image.tmdb.org/t/p/w300/";
   details = {};
   
@@ -21,7 +20,7 @@ export class MovieComponent implements OnInit {
   ngOnInit(){
     this.route.params.subscribe(params => {
       let id = params['id'];
-      this.movieService.getMovie(id).subscribe(details => {
+      this.movieService.getPerson(id).subscribe(details => {
         console.log(details);
         this.details = details;
       });
@@ -31,5 +30,4 @@ export class MovieComponent implements OnInit {
   getUrl(src: string): string {
     return `${this.baseUrl}${src}`;
   }
-  
 }

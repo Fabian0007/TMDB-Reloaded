@@ -65,5 +65,15 @@ export class MovieService {
         return response.json();
       });
   }
+  
+  
+    getPerson(id:number): Observable<any> {
+    var request =`${this.url}/person/${id}?api_key=${this.apiKey}&append_to_response=alternative_titles,credits,releases,videos,similar,reviews,images`;
+    console.log(request);
+    return this.http.get(request)
+      .map(response => {
+        return response.json();
+      });
+  }
 
 }

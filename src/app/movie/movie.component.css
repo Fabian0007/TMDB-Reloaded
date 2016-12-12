@@ -10,3 +10,8 @@
 .float{
     float: left;
 }
+
+#buttongenre{
+    background-color: #FFC107;
+    color:#551A8B;
+}
