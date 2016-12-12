@@ -58,6 +58,10 @@
             <div *ngIf="details.credits">
                 <app-moviecast [credits]="details.credits.cast"></app-moviecast>
             </div>
+            
+            <div *ngIf="details.credits">
+                <app-moviecrew [credits]="details.credits.crew"></app-moviecrew>
+            </div>
            
       </md-card-subtitle>
    </md-card-title-group>

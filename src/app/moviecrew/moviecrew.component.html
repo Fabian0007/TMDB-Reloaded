@@ -1,0 +1,23 @@
+<md-card>
+    <md-toolbar color= "accent">
+        <button md-button id="subprincipal" (click)="changeState();">
+            <md-icon *ngIf="!active" color="primary">add</md-icon>
+            <md-icon *ngIf="active" color="primary">remove</md-icon>
+            Crew
+        </button>
+    </md-toolbar>
+    <div [hidden]="!active">
+        <md-grid-list   cols="5" class="total" flex>
+            <div *ngFor="let credit of credits">
+                <md-grid-tile  *ngIf="credit.profile_path">
+                    <a href="#/person/{{ credit.id }}" title="{{ credit.name }}" >
+                        <img src="{{getUrl(credit.profile_path)}}">
+                    </a>
+                    <md-grid-tile-footer><h3>{{credit.name}}</h3></md-grid-tile-footer>
+                </md-grid-tile>
+            </div>
+        
+      </md-grid-list>
+    </div>
+    
+ </md-card>

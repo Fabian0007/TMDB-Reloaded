@@ -22,6 +22,7 @@ import { UpcomingComponent } from './upcoming/upcoming.component';
 import { SearchComponent } from './search/search.component';
 import { MovietrailerComponent } from './movietrailer/movietrailer.component';
 import { MoviecastComponent } from './moviecast/moviecast.component';
+import { MoviecrewComponent } from './moviecrew/moviecrew.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MoviecastComponent } from './moviecast/moviecast.component';
     UpcomingComponent,
     SearchComponent,
     MovietrailerComponent,
-    MoviecastComponent
+    MoviecastComponent,
+    MoviecrewComponent
   ],
   imports: [
     MaterialModule.forRoot(),
