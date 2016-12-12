@@ -21,6 +21,7 @@ export class PersonComponent implements OnInit {
     this.route.params.subscribe(params => {
       let id = params['id'];
       this.movieService.getPerson(id).subscribe(details => {
+        console.log(details);
         this.details = details;
       });
     });

@@ -11,8 +11,8 @@
     <md-card-title-group>
         <img class="image" src="{{getUrl(details.profile_path)}}">
         <md-card-subtitle>
-            <md-card>
-                <span *ngIf="details.biography">
+            <md-card *ngIf="details.biography">
+                <span >
                     {{ details.biography }}
                 </span>
             </md-card>
