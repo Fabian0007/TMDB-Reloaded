@@ -21,6 +21,7 @@ import { IntheatersComponent } from './intheaters/intheaters.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { SearchComponent } from './search/search.component';
 import { MovietrailerComponent } from './movietrailer/movietrailer.component';
+import { MoviecastComponent } from './moviecast/moviecast.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MovietrailerComponent } from './movietrailer/movietrailer.component';
     IntheatersComponent,
     UpcomingComponent,
     SearchComponent,
-    MovietrailerComponent
+    MovietrailerComponent,
+    MoviecastComponent
   ],
   imports: [
     MaterialModule.forRoot(),

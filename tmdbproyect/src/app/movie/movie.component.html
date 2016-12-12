@@ -18,8 +18,9 @@
 
 <md-card>
     <md-card-title-group>
-        <img class="image" src="{{getUrl(details.poster_path)}}">
         
+        <img class="image" src="{{getUrl(details.poster_path)}}">
+
         <md-card-subtitle>
             <md-card>
                 <span ng-if="details.overview">
@@ -28,37 +29,36 @@
             </md-card>
 
             <md-card>
-                <md-card-content>
-                    <div class="col-md-6">
-                        <div class="detail">
-                            Release Date {{ details.release_date | date }}
-                        </div>
-                        <div class="detail">
-                            Running Time {{ details.runtime }} minutes
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="detail">
-                            Budget ${{ details.budget | number }} USD
-                        </div>
-                        <div class="detail">
-                            Revenue ${{ details.revenue | number }} USD
-                        </div>
-                    </div>
-                </md-card-content>
+                <div>
+                    <md-icon class="icons">visibility</md-icon>
+                    Release Date {{ details.release_date | date }}
+                </div>
+                <div>
+                    <md-icon class="icons">access_time</md-icon>
+                    Running Time {{ details.runtime }} minutes
+                </div>
+                <div class="detail">
+                    <md-icon class="icons">attach_money</md-icon>
+                    Budget ${{ details.budget | number }} USD
+                </div>
+                <div class="detail">
+                    <md-icon class="icons">attach_money</md-icon>
+                    Revenue ${{ details.revenue | number }} USD
+                </div>
+                
             </md-card>
             
             <md-card>
-                <md-card-content>
-                    <span *ngFor="let genre of details.genres ">
-                        <strong style="border: 1pcx solid #dddddd; margin: 5px; padding: 2px; background-color: #eeeeee;"> {{ genre.name }} </strong>
-                    </span>
-                </md-card-content>
+                <h2>Genres</h2>
+                <span *ngFor="let genre of details.genres ">
+                    <strong style="border: 1pcx solid #dddddd; margin: 5px; padding: 2px; background-color: #eeeeee;"> {{ genre.name }} </strong>
+                </span>
             </md-card>
             
-            <md-card>
-                <span ng-if="details.homepage"><a href="{{details.homepage }}" target=_new>{{details.homepage }}</a></span>
-            </md-card>
+            <div *ngIf="details.credits">
+                <app-moviecast [credits]="details.credits.cast"></app-moviecast>
+            </div>
+           
       </md-card-subtitle>
    </md-card-title-group>
 </md-card>

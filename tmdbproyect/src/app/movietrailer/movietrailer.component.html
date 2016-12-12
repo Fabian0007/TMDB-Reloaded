@@ -1,3 +1,11 @@
-<iframe class="video" [src]="getUrlVideo()" frameborder="0" allowfullscreen></iframe>
+<div>
+    <button md-fab color="primary" (click)="changeState();">
+        <md-icon color="accent">remove</md-icon>
+    </button>
+</div>
+<div *ngIf="active">
+    <iframe class="video" [src]="getUrlVideo()" frameborder="0" allowfullscreen></iframe>
+</div>
+
 
 
