@@ -1,20 +1,32 @@
 <app-toolbar></app-toolbar>
+<md-card>
+    <md-card-content>
+       <h1 id="subprincipal"> {{ details.title }} </h1> 
+       <h3 *ngIf="details.tagline">{{details.tagline }}</h3>
+    </md-card-content>
+</md-card>
+
+
+
+<div *ngIf="details.videos" align="center">
+    <md-card>
+        <app-movietrailer [key]="details.videos.results[0].key"></app-movietrailer>
+    </md-card>
+</div>
+
+
 
 <md-card>
     <md-card-title-group>
-        <img src="{{getUrl(details.poster_path)}}">
-        <md-card-title>{{ details.title }}</md-card-title>
+        <img class="image" src="{{getUrl(details.poster_path)}}">
+        
         <md-card-subtitle>
-            <h3 ng-if="details.tagline">{{details.tagline }}</h3>
-            
             <md-card>
-                <md-card-content>
-                    <span ng-if="details.overview">
-                        {{ details.overview }}
-                    </span>
-                </md-card-content>
+                <span ng-if="details.overview">
+                    {{ details.overview }}
+                </span>
             </md-card>
-            
+
             <md-card>
                 <md-card-content>
                     <div class="col-md-6">
@@ -43,10 +55,10 @@
                     </span>
                 </md-card-content>
             </md-card>
-                
-                <br />
-                <span ng-if="details.homepage"><a href="{{details.homepage }}" target=_new>{{details.homepage }}</a></span>
             
+            <md-card>
+                <span ng-if="details.homepage"><a href="{{details.homepage }}" target=_new>{{details.homepage }}</a></span>
+            </md-card>
       </md-card-subtitle>
    </md-card-title-group>
 </md-card>
