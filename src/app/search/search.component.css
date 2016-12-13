@@ -1,0 +1,11 @@
+.pull-right {
+  float: right !important;
+  width: 25%;
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 100;
+}
+
+.autocomplete{
+    width: 10%;
+}

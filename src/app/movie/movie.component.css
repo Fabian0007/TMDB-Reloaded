@@ -1,6 +1,6 @@
 .image{
-    width:50%;
-    height:100%;
+    width:25%;
+    height:50%;
 }
 
 .icons{
@@ -12,6 +12,6 @@
 }
 
 #buttongenre{
-    background-color: #FFC107;
+    background-color: #FFd740;
     color:#551A8B;
 }

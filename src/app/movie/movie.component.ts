@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie',
@@ -12,6 +11,7 @@ export class MovieComponent implements OnInit {
 
   baseUrl = "http://image.tmdb.org/t/p/w300/";
   details = {};
+  keyvideo:string;
   
 
   constructor(private movieService: MovieService, private route: ActivatedRoute,
@@ -23,9 +23,11 @@ export class MovieComponent implements OnInit {
       let id = params['id'];
       this.movieService.getMovie(id).subscribe(details => {
         this.details = details;
+        this.keyvideo=details.videos.results[0];
       });
     });
   }
+  
 
   getUrl(src: string): string {
     return `${this.baseUrl}${src}`;

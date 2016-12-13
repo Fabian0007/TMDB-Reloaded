@@ -75,5 +75,16 @@ export class MovieService {
         return response.json();
       });
   }
-
+  
+    getSearch(search:string, page:number): Observable<any> {
+    if ( page === undefined ) {
+      page = 1;
+    }
+    var request =`${this.url}/search/multi?api_key=${this.apiKey}&query=${search}&page=${page}&include_adult=false`;
+    console.log(request);
+    return this.http.get(request)
+      .map(response => {
+        return response.json().results;
+      });
+  }
 }

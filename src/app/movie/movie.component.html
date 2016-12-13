@@ -8,7 +8,7 @@
 
 
 
-<div *ngIf="details.videos" align="center">
+<div *ngIf="keyvideo != null" align="center">
     <md-card>
         <app-movietrailer [key]="details.videos.results[0].key"></app-movietrailer>
     </md-card>
@@ -18,7 +18,9 @@
 
 <md-card>
     <md-card-title-group>
+        
         <img class="image" src="{{getUrl(details.poster_path)}}">
+
         <md-card-subtitle>
             <md-card>
                 <span *ngIf="details.overview">
@@ -27,30 +29,29 @@
             </md-card>
 
             <md-card>
-                <div *ngIf="details.release_date">
+                <div>
                     <md-icon class="icons">visibility</md-icon>
-                    Release Date: {{ details.release_date | date }}
+                    Release Date {{ details.release_date | date }}
                 </div>
-                <div *ngIf="details.runtime">
+                <div>
                     <md-icon class="icons">access_time</md-icon>
-                    Running Time: {{ details.runtime }} minutes
+                    Running Time {{ details.runtime }} minutes
                 </div>
-                <div *ngIf="details.budget">
+                <div class="detail">
                     <md-icon class="icons">attach_money</md-icon>
-                    Budget: ${{ details.budget | number }} USD
+                    Budget ${{ details.budget | number }} USD
                 </div>
-                <div *ngIf="details.revenue">
+                <div class="detail">
                     <md-icon class="icons">attach_money</md-icon>
-                    Revenue: ${{ details.revenue | number }} USD
+                    Revenue ${{ details.revenue | number }} USD
                 </div>
+                
             </md-card>
             
             <md-card>
                 <h2>Genres</h2>
                 <span *ngFor="let genre of details.genres ">
-                    <button md-button id="buttongenre" >
-                        {{ genre.name }}
-                    </button>
+                    <button md-button id="buttongenre"> {{ genre.name }} </button>
                 </span>
             </md-card>
             
@@ -61,6 +62,7 @@
             <div *ngIf="details.credits">
                 <app-moviecrew [credits]="details.credits.crew"></app-moviecrew>
             </div>
-        </md-card-subtitle>
+           
+      </md-card-subtitle>
    </md-card-title-group>
 </md-card>

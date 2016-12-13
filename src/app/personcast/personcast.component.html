@@ -11,7 +11,7 @@
             <div *ngFor="let credit of credits">
                 <md-grid-tile  *ngIf="credit.poster_path">
                     <a href="#/movie/{{ credit.id }}" title="{{ credit.title }}" >
-                        <img src="{{getUrl(credit.poster_path)}}">
+                        <img  class="img" src="{{getUrl(credit.poster_path)}}">
                     </a>
                     <md-grid-tile-footer><h3>{{credit.character}}</h3></md-grid-tile-footer>
                 </md-grid-tile>

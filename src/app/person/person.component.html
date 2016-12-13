@@ -5,14 +5,19 @@
     </md-card-content>
 </md-card>
 
-
+<div *ngIf="details.credits">
+    <app-personcast [credits]="details.credits.cast"></app-personcast>
+</div>
+<div *ngIf="details.credits">
+    <app-personcrew [credits]="details.credits.crew"></app-personcrew>
+</div>
 
 <md-card>
     <md-card-title-group>
         <img class="image" src="{{getUrl(details.profile_path)}}">
         <md-card-subtitle>
             <md-card *ngIf="details.biography">
-                <span >
+                <span>
                     {{ details.biography }}
                 </span>
             </md-card>
@@ -36,14 +41,8 @@
                     Homepage: <a href="{{details.homepage }}" target=_new>{{details.homepage }}</a>
                 </div>
             </md-card>
-            
-            <div *ngIf="details.credits">
-                <app-personcast [credits]="details.credits.cast"></app-personcast>
-            </div>
-            <div *ngIf="details.credits">
-                <app-personcrew [credits]="details.credits.crew"></app-personcrew>
-            </div>
 
         </md-card-subtitle>
    </md-card-title-group>
 </md-card>
+
