@@ -1,9 +1,10 @@
-<md-input dividerColor="accent" placeholder="Search for an Actor, Actress, or Movie" value="" [(ngModel)]="search" (ngModelChange)="doSearch($event)">
+<md-input dividerColor="accent" (blur)="changeFocus(false)" (focus)="changeFocus(true)" placeholder="Search for an Actor, Actress, or Movie" value="" [(ngModel)]="search" (ngModelChange)="doSearch($event)">
 </md-input>
 
-    <div *ngIf="results.length > 0" class="pull-right">
+<div (mouseleave)="changeState(false)" (mouseover)="changeState(true)">
+    <div [hidden]="!(results.length> 0 && (active || focus))" class="pull-right" >
         <div *ngFor="let result of results">
-            <a *ngIf="result.media_type === 'movie' && result.poster_path" href="#/movie/{{ result.id }}">
+            <a *ngIf="result.media_type === 'movie' && result.poster_path" href="#/movie/{{ result.id }}" (click)="saveSearch()">
                 <div style="margin-bottom: 2px; margin-top: 2px;">
                     <img *ngIf="result.poster_path" src="{{getUrl(result.poster_path)}}" class="autocomplete">{{ result.title }}
                 </div>
@@ -15,3 +16,4 @@
             </a>
         </div>
     </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -11,12 +11,13 @@ export class SearchComponent implements OnInit {
   baseUrl = "http://image.tmdb.org/t/p/w300/";
   results = [];
   search:string;
+  active:boolean=false;
+  focus:boolean=false;
 
   constructor(private movieService: MovieService, private route: ActivatedRoute,
   		private router: Router){
   		  this.router.events.subscribe(path => {
-  		    this.results=[];
-  		    this.search="";
+  		    this.clear();
       });
   	}
 
@@ -24,12 +25,26 @@ export class SearchComponent implements OnInit {
 
   }
   
+  changeState(active:boolean){
+    this.active=active;
+  }
+  
+  changeFocus(focus:boolean){
+    this.focus=focus;
+  }
+  
+  
+  clear(){
+    this.results=[];
+    this.search="";
+    this.active=false;
+  }
+  
   
   doSearch(){
     if(this.search.length >= 2){
       this.movieService.getSearch(this.search, 1)
       .subscribe(results => {
-        console.log(results);
         this.results=results;
       });
     }else{

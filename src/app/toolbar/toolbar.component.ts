@@ -17,5 +17,6 @@ export class ToolbarComponent implements OnInit {
   goToHome() {
     this.router.navigate(['']);
   }
+  
 
 }
