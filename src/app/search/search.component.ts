@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   search:string;
   active:boolean=false;
   focus:boolean=false;
+  colors:Array<string>=[];
 
   constructor(private movieService: MovieService, private route: ActivatedRoute,
   		private router: Router){
@@ -33,6 +34,13 @@ export class SearchComponent implements OnInit {
     this.focus=focus;
   }
   
+  putColor(i:number){
+    this.colors[i]="#C6DEFF";
+  }
+  
+  removeColor(i:number){
+    this.colors[i]="#FFFFFF";
+  }
   
   clear(){
     this.results=[];
@@ -46,6 +54,9 @@ export class SearchComponent implements OnInit {
       this.movieService.getSearch(this.search, 1)
       .subscribe(results => {
         this.results=results;
+        for(let i=0;i<results.length;i++){
+          this.colors[i]="#FFFFFF";
+        }
       });
     }else{
       this.results=[];

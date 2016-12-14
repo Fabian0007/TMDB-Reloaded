@@ -9,9 +9,10 @@
     <div [hidden]="!active">
         <md-grid-list   cols="5" class="total" flex>
             <div *ngFor="let credit of credits">
-                <md-grid-tile  *ngIf="credit.profile_path">
+                <md-grid-tile >
                     <a href="#/person/{{ credit.id }}" title="{{ credit.name }}" >
-                        <img class="img" src="{{getUrl(credit.profile_path)}}">
+                        <img class="img" *ngIf="credit.profile_path" src="{{getUrl(credit.profile_path)}}">
+                        <img class="img" *ngIf="!credit.profile_path" src="../../assets/images/photonotavailable.jpg">
                     </a>
                     <md-grid-tile-footer><h3>{{credit.name}}</h3></md-grid-tile-footer>
                 </md-grid-tile>

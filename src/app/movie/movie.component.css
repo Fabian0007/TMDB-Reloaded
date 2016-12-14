@@ -15,3 +15,11 @@
     background-color: #FFd740;
     color:#551A8B;
 }
+
+.unavailable{
+    color:#FF0000;
+}
+
+a{
+  text-decoration:none
+}

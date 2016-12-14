@@ -19,31 +19,56 @@
 <md-card>
     <md-card-title-group>
         
-        <img class="image" src="{{getUrl(details.poster_path)}}">
+        <img *ngIf="details.poster_path" class="image" src="{{getUrl(details.poster_path)}}">
+        <img *ngIf="!details.poster_path" class="image" src="../../assets/images/posternotavailable.jpg">
 
         <md-card-subtitle>
             <md-card>
                 <span *ngIf="details.overview">
                     {{ details.overview }}
                 </span>
+                <span *ngIf="!details.overview">
+                    Overview not available, for more information see {{ details.title }} in 
+                    <a href="https://www.google.com.co//">https://www.google.com.co/</a>
+                </span>
+                
             </md-card>
 
             <md-card>
-                <div>
+                <div *ngIf="details.release_date">
                     <md-icon class="icons">visibility</md-icon>
                     Release Date {{ details.release_date | date }}
                 </div>
-                <div>
+                <div *ngIf="!details.release_date" class="unavailable">
+                    <md-icon class="icons">visibility</md-icon>
+                    Release Date not available
+                </div>
+                
+                <div *ngIf="details.runtime">
                     <md-icon class="icons">access_time</md-icon>
                     Running Time {{ details.runtime }} minutes
                 </div>
-                <div class="detail">
+                <div *ngIf="!details.runtime" class="unavailable">
+                    <md-icon class="icons">access_time</md-icon>
+                    Running Time not available
+                </div>
+                
+                <div *ngIf="details.budget" >
                     <md-icon class="icons">attach_money</md-icon>
                     Budget ${{ details.budget | number }} USD
                 </div>
-                <div class="detail">
+                <div *ngIf="!details.budget" class="unavailable">
+                    <md-icon class="icons">attach_money</md-icon>
+                    Budget not available
+                </div>
+                
+                <div *ngIf="details.revenue">
                     <md-icon class="icons">attach_money</md-icon>
                     Revenue ${{ details.revenue | number }} USD
+                </div>
+                <div *ngIf="!details.revenue" class="unavailable">
+                    <md-icon class="icons">attach_money</md-icon>
+                    Revenue not available
                 </div>
                 
             </md-card>
@@ -53,6 +78,9 @@
                 <span *ngFor="let genre of details.genres ">
                     <button md-button id="buttongenre"> {{ genre.name }} </button>
                 </span>
+                <div *ngIf="!details.genres" class="unavailable">
+                    Genres not available
+                </div>
             </md-card>
             
             <div *ngIf="details.credits">

@@ -7,13 +7,38 @@
         </button>
     </md-toolbar>
     <div [hidden]="!active">
-        <md-grid-list   cols="5" class="total" flex>
+        <md-toolbar color= "primary">
+            <button md-button id="principal"  (click)="changeOrder();">
+                <md-icon *ngIf="!orderUp" color="accent">arrow_downward</md-icon>
+                <md-icon *ngIf="orderUp" color="accent">arrow_upward</md-icon>
+                Order
+            </button>
+        </md-toolbar>
+        
+        <md-grid-list   cols="5">
             <div *ngFor="let credit of credits">
-                <md-grid-tile  *ngIf="credit.poster_path">
+                <md-grid-tile>
                     <a href="#/movie/{{ credit.id }}" title="{{ credit.title }}" >
-                        <img  class="img" src="{{getUrl(credit.poster_path)}}">
+                        <img  class="img" *ngIf="credit.poster_path" src="{{getUrl(credit.poster_path)}}">
+                        <img  class="img" *ngIf="!credit.poster_path" src="../../assets/images/posternotavailable.jpg">
                     </a>
-                    <md-grid-tile-footer><h3>{{credit.character}}</h3></md-grid-tile-footer>
+                    <md-grid-tile-footer>
+                        <h3>
+                        <a href="#/movie/{{ credit.id }}" *ngIf="credit.character">
+                             {{credit.character}}
+                        </a>
+                        <a href="#/movie/{{ credit.id }}" *ngIf="!credit.character" class="unavailable">
+                             Character not available
+                        </a>
+                        <br>
+                        <a href="#/movie/{{ credit.id }}" *ngIf="credit.release_date">
+                             {{credit.release_date}}
+                        </a>
+                        <a href="#/movie/{{ credit.id }}" *ngIf="!credit.release_date" class="unavailable">
+                             Date not available
+                        </a>
+                        </h3>
+                    </md-grid-tile-footer>
                 </md-grid-tile>
             </div>
         
