@@ -12,11 +12,13 @@
     width: 10%;
     vertical-align:middle;
     background-color: lightblue;
+
 }
 
 .results{
   margin-bottom: 2px; margin-top: 2px;
   font-size: 13px;
+  font-weight: bold;
 }
 
 

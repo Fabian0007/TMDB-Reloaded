@@ -3,15 +3,18 @@
 
 #principal {
     color:#FFC107;
-
 }
 
 #subprincipal {
-    color:#551A8B;
+    color:#673ab7;
 
 }
 
 .img{
     width:100% ;
     
+}
+
+.textcenter{
+  text-align: center;
 }

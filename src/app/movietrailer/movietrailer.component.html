@@ -1,7 +1,7 @@
 <div>
-    <button md-fab color="primary" (click)="changeState();">
-        <md-icon *ngIf="active"color="accent">remove</md-icon>
-        <md-icon *ngIf="!active" color="accent">add</md-icon>
+    <button md-fab color="accent" (click)="changeState();">
+        <md-icon *ngIf="active"color="primary">remove</md-icon>
+        <md-icon *ngIf="!active" color="primary">add</md-icon>
     </button>
 </div>
 <div *ngIf="active">

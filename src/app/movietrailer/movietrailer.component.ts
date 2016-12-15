@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -6,9 +6,9 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
   templateUrl: './movietrailer.component.html',
   styleUrls: ['./movietrailer.component.css'],
 })
-export class MovietrailerComponent implements OnInit {
+export class MovietrailerComponent implements OnInit, OnChanges {
   @Input() key: string;
-  active:boolean=true;
+  active:boolean=false;
   url: SafeResourceUrl;
   sanitizer:any;
   constructor(sanitizer: DomSanitizer) {
@@ -16,6 +16,10 @@ export class MovietrailerComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  
+  ngOnChanges(changes){
+    this.active=false;
   }
   
   getUrlVideo(): string {

@@ -25,7 +25,13 @@
         <md-card-subtitle>
             <md-card>
                 <span *ngIf="details.overview">
-                    {{ details.overview }}
+                    <div *ngIf="details.overview.length > 55">
+                        {{ details.overview }}
+                    </div>
+                    <div *ngIf="details.overview.length <= 55">
+                        {{ details.overview }} (For more information see {{ details.title }} in 
+                    <a href="https://www.google.com.co//">https://www.google.com.co/</a>)
+                    </div>
                 </span>
                 <span *ngIf="!details.overview">
                     Overview not available, for more information see {{ details.title }} in 
@@ -73,12 +79,12 @@
                 
             </md-card>
             
-            <md-card>
+            <md-card *ngIf="details.genres">
                 <h2>Genres</h2>
                 <span *ngFor="let genre of details.genres ">
                     <button md-button id="buttongenre"> {{ genre.name }} </button>
                 </span>
-                <div *ngIf="!details.genres" class="unavailable">
+                <div *ngIf="details.genres.length == 0" class="unavailable">
                     Genres not available
                 </div>
             </md-card>

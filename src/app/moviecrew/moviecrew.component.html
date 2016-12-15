@@ -1,4 +1,4 @@
-<md-card>
+<md-card *ngIf="credits.length > 0">
     <md-toolbar color= "accent">
         <button md-button id="subprincipal" (click)="changeState();">
             <md-icon *ngIf="!active" color="primary">add</md-icon>
@@ -7,13 +7,47 @@
         </button>
     </md-toolbar>
     <div [hidden]="!active">
-        <md-grid-list   cols="5" class="total" flex>
+        <md-toolbar color= "primary">
+            <button md-button id="principal"  (click)="changeOrder();">
+                <md-icon *ngIf="!orderUp" color="accent">arrow_downward</md-icon>
+                <md-icon *ngIf="orderUp" color="accent">arrow_upward</md-icon>
+                Order
+            </button>
+            
+            <button md-button id="principal" [ngStyle]="{border: '2px solid' + borderColorRelevance}" (click)="changeParameterRelevance();">
+                <md-icon color="accent">star</md-icon>
+                Relevance
+            </button>
+            <button md-button id="principal" [ngStyle]="{border: '2px solid' + borderColorAlphabetic}" (click)="changeParameterAlphabetic();">
+                <md-icon color="accent">font_download</md-icon>
+                Alphabetic
+            </button>
+            
+        </md-toolbar>
+        <md-grid-list   cols="5">
             <div *ngFor="let credit of credits">
-                <md-grid-tile  *ngIf="credit.profile_path">
+                <md-grid-tile>
+                    <md-grid-tile-header>
+                        <a href="#/person/{{ credit.id }}" *ngIf="credit.name">
+                            {{credit.name}}
+                        </a>
+                    </md-grid-tile-header> 
+                    
                     <a href="#/person/{{ credit.id }}" title="{{ credit.name }}" >
-                        <img class="img" src="{{getUrl(credit.profile_path)}}">
+                        <img class="img" *ngIf="credit.profile_path" src="{{getUrl(credit.profile_path)}}">
+                        <img class="img" *ngIf="!credit.profile_path" src="../../assets/images/photonotavailable.jpg">
                     </a>
-                    <md-grid-tile-footer><h3>{{credit.job}}</h3></md-grid-tile-footer>
+                    <md-grid-tile-footer>
+                        <div>
+                            <md-icon class="icons">account_box</md-icon>
+                            <a href="#/movie/{{ credit.id }}" *ngIf="credit.job">
+                                 {{credit.job}}
+                            </a>
+                            <a href="#/movie/{{ credit.id }}" *ngIf="!credit.job" class="unavailable">
+                                Unvailable
+                            </a>
+                        </div>
+                    </md-grid-tile-footer>
                 </md-grid-tile>
             </div>
         

@@ -1,9 +1,13 @@
 a{
   color:#FFFFFF;
-  text-decoration:none
-  
+  text-decoration:none;
+  font-size: 13px;
 }
 
 .unavailable{
     color:#FF0000;
+}
+
+.icons{
+    font-size:13px;
 }
