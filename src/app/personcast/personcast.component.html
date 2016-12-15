@@ -35,7 +35,7 @@
                         
                     <a href="#/movie/{{ credit.id }}" title="{{ credit.title }}" >
                         <img  class="img" *ngIf="credit.poster_path" src="{{getUrl(credit.poster_path)}}">
-                        <img  class="img" *ngIf="!credit.poster_path" src="../../assets/images/posternotavailable.jpg">
+                        <img  class="img" *ngIf="!credit.poster_path" src="assets/images/posternotavailable.jpg">
                     </a>
                     <md-grid-tile-footer>
                         <div>

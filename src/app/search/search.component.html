@@ -7,14 +7,14 @@
             <a *ngIf="result.media_type === 'movie'" href="#/movie/{{ result.id }}" >
                 <div class="results" [ngStyle]="{'background-color': colors[i]}" (mouseleave)="removeColor(i)" (mouseover)="putColor(i)">
                     <img *ngIf="result.poster_path" src="{{getUrl(result.poster_path)}}"  class="autocomplete">
-                    <img *ngIf="!result.poster_path" src="../../assets/images/posternotavailable.jpg"  class="autocomplete">
+                    <img *ngIf="!result.poster_path" src="assets/images/posternotavailable.jpg"  class="autocomplete">
                     {{ result.title }}
                 </div>
             </a>
             <a *ngIf="result.media_type === 'person'" href="#/person/{{ result.id }}">
                 <div class="results" [ngStyle]="{'background-color': colors[i]}" (mouseleave)="removeColor(i)" (mouseover)="putColor(i)">
                     <img *ngIf="result.profile_path" src="{{getUrl(result.profile_path)}}" class="autocomplete">
-                    <img *ngIf="!result.profile_path" src="../../assets/images/photonotavailable.jpg"  class="autocomplete">
+                    <img *ngIf="!result.profile_path" src="assets/images/photonotavailable.jpg"  class="autocomplete">
                     {{ result.name }}
                 </div>
             </a>

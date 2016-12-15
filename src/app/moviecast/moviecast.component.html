@@ -35,7 +35,7 @@
                     
                     <a href="#/person/{{ credit.id }}" title="{{ credit.name }}" >
                         <img class="img" *ngIf="credit.profile_path" src="{{getUrl(credit.profile_path)}}">
-                        <img class="img" *ngIf="!credit.profile_path" src="../../assets/images/photonotavailable.jpg">
+                        <img class="img" *ngIf="!credit.profile_path" src="assets/images/photonotavailable.jpg">
                     </a>
                     <md-grid-tile-footer>
                          <div>
