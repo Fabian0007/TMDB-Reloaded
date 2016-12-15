@@ -1,3 +1,10 @@
+<app-toolbar *ngIf="!preview"></app-toolbar>
+<md-card *ngIf="!preview">
+    
+    
+</md-card>
+
+
 <md-input dividerColor="accent" (blur)="changeFocus(false)" (focus)="changeFocus(true)" placeholder="Search for an Actor, Actress, or Movie" value="" [(ngModel)]="search" (ngModelChange)="doSearch($event)">
 </md-input>
 

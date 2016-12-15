@@ -12,7 +12,11 @@
                 <a href="#/movie/{{ movie.id }}" title="{{ movie.title }}" ng-if="movie.poster_path">
                     <img  class="img" src="{{getUrl(movie.poster_path)}}">
                 </a>
-                 <md-grid-tile-footer><h3>{{movie.title}}</h3></md-grid-tile-footer>
+                 <md-grid-tile-footer>
+                     <a href="#/movie/{{ movie.id }}" *ngIf="movie.title">
+                         {{movie.title}}
+                     </a>
+                 </md-grid-tile-footer>
             </md-grid-tile>
           </md-grid-list>
          </md-card-content>

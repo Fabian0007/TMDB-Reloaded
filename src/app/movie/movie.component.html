@@ -25,10 +25,10 @@
         <md-card-subtitle>
             <md-card>
                 <span *ngIf="details.overview">
-                    <div *ngIf="details.overview.length > 55">
+                    <div *ngIf="details.overview.length > 100">
                         {{ details.overview }}
                     </div>
-                    <div *ngIf="details.overview.length <= 55">
+                    <div *ngIf="details.overview.length <= 100">
                         {{ details.overview }} (For more information see {{ details.title }} in 
                     <a href="https://www.google.com.co//">https://www.google.com.co/</a>)
                     </div>

@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   active:boolean=false;
   focus:boolean=false;
   colors:Array<string>=[];
+  @Input() preview:boolean;
 
   constructor(private movieService: MovieService, private route: ActivatedRoute,
   		private router: Router){
@@ -53,7 +54,18 @@ export class SearchComponent implements OnInit {
     if(this.search.length >= 2){
       this.movieService.getSearch(this.search, 1)
       .subscribe(results => {
-        this.results=results;
+        if (this.preview) {
+          try {
+             this.results=results;
+          }
+          catch(err){
+            this.results = results;
+          }
+        }
+        else {
+          this.results=results;
+        }
+        
         for(let i=0;i<results.length;i++){
           this.colors[i]="#FFFFFF";
         }
