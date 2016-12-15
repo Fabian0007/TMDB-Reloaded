@@ -1,0 +1,69 @@
+<app-toolbar></app-toolbar>
+
+<md-card>
+    <md-toolbar color= "accent">
+            <button md-button id="subprincipal" [ngStyle]="{border: '2px solid' + borderColorPerson}" (click)="changeParameterPerson();">
+                <md-icon color="primary">person</md-icon>
+                Persons
+            </button>
+            <button md-button id="subprincipal" [ngStyle]="{border: '2px solid' + borderColorMovie}" (click)="changeParameterMovie();">
+                <md-icon color="primary">movie</md-icon>
+                Movies
+            </button>
+        </md-toolbar>
+</md-card>
+<md-card>
+    <ul class="pagination" *ngIf="parameter=='persons' && (resultsPersons.length  > 0 || page!=1)">
+        <li><a  href="#/searchexpanded/persons/{{ search }}/{{ setPage(false)}}">«</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[0]}"  href="#/searchexpanded/persons/{{ search }}/1">1</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[1]}" href="#/searchexpanded/persons/{{ search }}/2">2</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[2]}" href="#/searchexpanded/persons/{{ search }}/3">3</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[3]}" href="#/searchexpanded/persons/{{ search }}/4">4</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[4]}" href="#/searchexpanded/persons/{{ search }}/5">5</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[5]}" href="#/searchexpanded/persons/{{ search }}/6">6</a></li>
+        <li><a  href="#/searchexpanded/persons/{{ search }}/{{setPage(true)}}">»</a></li>
+    </ul>
+    <ul class="pagination" *ngIf="parameter=='movies' && (resultsMovies.length  > 0 || page!=1)">
+        <li><a  href="#/searchexpanded/movies/{{ search }}/{{ setPage(false)}}">«</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[0]}" href="#/searchexpanded/movies/{{ search }}/1">1</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[1]}" href="#/searchexpanded/movies/{{ search }}/2">2</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[2]}" href="#/searchexpanded/movies/{{ search }}/3">3</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[3]}" href="#/searchexpanded/movies/{{ search }}/4">4</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[4]}" href="#/searchexpanded/movies/{{ search }}/5">5</a></li>
+        <li><a [ngStyle]="{'background-color': colorsPagination[5]}" href="#/searchexpanded/movies/{{ search }}/6">6</a></li>
+        <li><a href="#/searchexpanded/movies/{{ search }}/{{setPage(true)}}">»</a></li>
+    </ul>
+    <div class="notfound" *ngIf="resultsPersons.length == 0 && parameter=='persons'">
+        No persons found
+    </div>
+    <div class="notfound" *ngIf="resultsMovies.length == 0 && parameter=='movies'">
+        No movies found
+    </div>
+</md-card>
+<md-card *ngIf="parameter=='persons'">
+    <div *ngFor="let result of resultsPersons; let i = index;">
+            <a href="#/person/{{ result.id }}">
+                <div class="results" [ngStyle]="{'background-color': colors[i]}" (mouseleave)="removeColor(i)" (mouseover)="putColor(i)">
+                    <img *ngIf="result.profile_path" src="{{getUrl(result.profile_path)}}" class="autocomplete">
+                    <img *ngIf="!result.profile_path" src="assets/images/photonotavailable.jpg"  class="autocomplete">
+                    {{ result.name }}
+                </div>
+            </a>
+    </div>
+
+    
+</md-card>
+
+<md-card *ngIf="parameter=='movies'">
+    <div *ngFor="let result of resultsMovies; let i = index;">
+            <a href="#/movie/{{ result.id }}">
+                <div class="results" [ngStyle]="{'background-color': colors[i]}" (mouseleave)="removeColor(i)" (mouseover)="putColor(i)">
+                    <img *ngIf="result.poster_path" src="{{getUrl(result.poster_path)}}" class="autocomplete">
+                    <img *ngIf="!result.poster_path" src="assets/images/posternotavailable.jpg"  class="autocomplete">
+                    {{ result.title }}
+                </div>
+            </a>
+    </div>
+
+    
+</md-card>

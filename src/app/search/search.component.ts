@@ -9,11 +9,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   baseUrl = "http://image.tmdb.org/t/p/w300/";
-  results = [];
+  resultsPersons = [];
+  resultsMovies = [];
   search:string;
   active:boolean=false;
   focus:boolean=false;
-  colors:Array<string>=[];
+  colorsPersons:Array<string>=[];
+  colorsMovies:Array<string>=[];
+  color:string="#FFFFFF";
   @Input() preview:boolean;
 
   constructor(private movieService: MovieService, private route: ActivatedRoute,
@@ -35,16 +38,34 @@ export class SearchComponent implements OnInit {
     this.focus=focus;
   }
   
-  putColor(i:number){
-    this.colors[i]="#C6DEFF";
+  
+  putColor(){
+    this.color="#C6DEFF";
   }
   
-  removeColor(i:number){
-    this.colors[i]="#FFFFFF";
+  removeColor(){
+    this.color="#FFFFFF";
+  }
+  
+  putColorPersons(i:number){
+    this.colorsPersons[i]="#C6DEFF";
+  }
+  
+  putColorMovies(i:number){
+    this.colorsMovies[i]="#C6DEFF";
+  }
+  
+  removeColorPersons(i:number){
+    this.colorsPersons[i]="#FFFFFF";
+  }
+  
+  removeColorMovies(i:number){
+    this.colorsMovies[i]="#FFFFFF";
   }
   
   clear(){
-    this.results=[];
+    this.resultsPersons=[];
+    this.resultsMovies=[];
     this.search="";
     this.active=false;
   }
@@ -52,26 +73,25 @@ export class SearchComponent implements OnInit {
   
   doSearch(){
     if(this.search.length >= 2){
-      this.movieService.getSearch(this.search, 1)
-      .subscribe(results => {
-        if (this.preview) {
-          try {
-             this.results=results;
-          }
-          catch(err){
-            this.results = results;
-          }
-        }
-        else {
-          this.results=results;
-        }
-        
-        for(let i=0;i<results.length;i++){
-          this.colors[i]="#FFFFFF";
+      this.movieService.getSearchPerson(this.search, 1)
+      .subscribe(resultsPersons => {
+        this.resultsPersons=resultsPersons.slice(0,3);
+        for(let i=0;i<this.resultsPersons.length;i++){
+          this.colorsPersons[i]="#FFFFFF";
         }
       });
+      this.movieService.getSearchMovie(this.search, 1)
+      .subscribe(resultsMovies => {
+        this.resultsMovies=resultsMovies.slice(0,3);
+        for(let i=0;i<this.resultsPersons.length;i++){
+          this.colorsMovies[i]="#FFFFFF";
+        }
+      });
+      
+      
     }else{
-      this.results=[];
+      this.resultsPersons=[];
+       this.resultsMovies=[];
     }
   }
   

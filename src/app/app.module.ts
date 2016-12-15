@@ -26,6 +26,7 @@ import { MoviecrewComponent } from './moviecrew/moviecrew.component';
 import { PersonComponent } from './person/person.component';
 import { PersoncastComponent } from './personcast/personcast.component';
 import { PersoncrewComponent } from './personcrew/personcrew.component';
+import { SearchexpandedComponent } from './searchexpanded/searchexpanded.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PersoncrewComponent } from './personcrew/personcrew.component';
     MoviecrewComponent,
     PersonComponent,
     PersoncastComponent,
-    PersoncrewComponent
+    PersoncrewComponent,
+    SearchexpandedComponent
   ],
   imports: [
     MaterialModule.forRoot(),

@@ -6,6 +6,7 @@ import { TopmoviesComponent } from './topmovies/topmovies.component';
 import { IntheatersComponent } from './intheaters/intheaters.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { PersonComponent } from './person/person.component';
+import { SearchexpandedComponent } from './searchexpanded/searchexpanded.component';
 
 export const ROUTES: Routes = [
 	{ path: '',  component: HomeComponent },
@@ -14,5 +15,6 @@ export const ROUTES: Routes = [
 	{ path: 'intheaters', component: IntheatersComponent },
 	{ path: 'upcoming', component: UpcomingComponent },
 	{ path: 'movie/:id', component: MovieComponent },
-	{ path: 'person/:id', component: PersonComponent }
+	{ path: 'person/:id', component: PersonComponent },
+	{ path: 'searchexpanded/:parameter/:search/:page', component: SearchexpandedComponent }
 ];

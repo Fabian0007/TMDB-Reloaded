@@ -69,11 +69,35 @@ export class MovieService {
       });
   }
   
-    getSearch(search:string, page:number): Observable<any> {
+  getSearch(search:string, page:number): Observable<any> {
     if ( page === undefined ) {
       page = 1;
     }
     var request =`${this.url}/search/multi?api_key=${this.apiKey}&query=${search}&page=${page}&include_adult=false`;
+    return this.http.get(request)
+      .map(response => {
+        return response.json().results;
+      });
+  }
+  
+  
+  getSearchPerson(search:string, page:number): Observable<any> {
+    if ( page === undefined ) {
+      page = 1;
+    }
+    var request =`${this.url}/search/person?api_key=${this.apiKey}&query=${search}&page=${page}&include_adult=false`;
+    return this.http.get(request)
+      .map(response => {
+        return response.json().results;
+      });
+  }
+  
+  
+  getSearchMovie(search:string, page:number): Observable<any> {
+    if ( page === undefined ) {
+      page = 1;
+    }
+    var request =`${this.url}/search/movie?api_key=${this.apiKey}&query=${search}&page=${page}&include_adult=false`;
     return this.http.get(request)
       .map(response => {
         return response.json().results;

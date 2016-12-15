@@ -1,18 +1,12 @@
-.pull-right {
-  float: right !important;
-  width: 25%;
-  background-color: #ffffff;
-  position: absolute;
-  z-index: 100;
-  border-radius: 3px;
-	box-shadow: -5px 10px 26px 0px rgba(0,0,0,0.75);
-}
-
 .autocomplete{
     width: 10%;
     vertical-align:middle;
     background-color: lightblue;
 
+}
+
+.notfound{
+  color:red;
 }
 
 .results{
@@ -30,4 +24,20 @@ a{
 
 h3{
   color:#673ab7;
+}
+
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
 }
