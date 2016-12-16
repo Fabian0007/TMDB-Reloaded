@@ -8,13 +8,16 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./latestmovies.component.css']
 })
 export class LatestmoviesComponent implements OnInit {
-  baseUrl = "http://image.tmdb.org/t/p/w300/";
-  movies = [];
+  baseUrl:string = "http://image.tmdb.org/t/p/w300/";
+  movies:any = [];
   @Input() preview: boolean = false;
 
   constructor(private movieService: MovieService, private route: ActivatedRoute,
   		private router: Router){}
 
+  /**
+  * Get the latest movies
+  */
   ngOnInit(){
     this.movieService.getLatest()
       .subscribe(movies => {
@@ -32,11 +35,26 @@ export class LatestmoviesComponent implements OnInit {
       });
   }
 
+  /**
+  * Get the Total Url of image
+  * @param {String} Src of image
+  * @return {String} Total Url of image
+  */
   getUrl(src: string): string {
     return `${this.baseUrl}${src}`;
   }
   
+  /**
+  * Redirect to latestmovies component in total window
+  */
   goLatestMovies() {
     this.router.navigate(['/latestmovies']);
+  }
+  
+  /**
+  * Redirect to a movie
+  */
+  goMovie(id:number) {
+    this.router.navigate(['/movie/'+id]);
   }
 }

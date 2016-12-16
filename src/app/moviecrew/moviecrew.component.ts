@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-moviecrew',
@@ -15,26 +16,41 @@ export class MoviecrewComponent implements OnInit, OnChanges {
   borderColorRelevance:string="#FFC107";
   borderColorAlphabetic:string="#673ab7";
 
-  constructor(){}
+  constructor(private route: ActivatedRoute,
+  		private router: Router){}
 
   ngOnInit(){
   }
 
+  /**
+  * Get the Total Url of image
+  * @param {String} Src of image
+  * @return {String} Total Url of image
+  */
   getUrl(src: string): string {
     return `${this.baseUrl}${src}`;
   }
   
+  /**
+  * Change visibility of component in the html
+  */
   changeState() {
     this.active=!this.active;
   }
   
-    changeParameterRelevance() {
+  /**
+  * Makes relevance the new ordering parameter
+  */
+  changeParameterRelevance() {
     this.borderColorRelevance="#FFC107";
     this.borderColorAlphabetic="#673ab7";
     this.parameter="Relevance";
     this.doSort();
   }  
   
+  /**
+  * Makes alphabetic the new ordering parameter
+  */
   changeParameterAlphabetic() {
     this.borderColorAlphabetic="#FFC107";
     this.borderColorRelevance="#673ab7";
@@ -42,11 +58,17 @@ export class MoviecrewComponent implements OnInit, OnChanges {
     this.doSort();
   }  
   
+  /**
+  * Reverse order
+  */
   changeOrder() {
     this.orderUp=!this.orderUp;
     this.doSort();
   }
   
+  /**
+  * Restart the component
+  */
   ngOnChanges(changes){
     this.copyCredits=this.credits;
     this.active = false;
@@ -57,6 +79,9 @@ export class MoviecrewComponent implements OnInit, OnChanges {
     this.doSort();
   }
   
+  /**
+  * Performs the ordering
+  */
   doSort(){
     
     if(this.parameter=="Relevance"){
@@ -86,5 +111,12 @@ export class MoviecrewComponent implements OnInit, OnChanges {
         });
       }
     }
+  }
+  
+  /**
+  * Redirect to a person
+  */
+  goPerson(id:number) {
+    this.router.navigate(['/person/'+id]);
   }
 }

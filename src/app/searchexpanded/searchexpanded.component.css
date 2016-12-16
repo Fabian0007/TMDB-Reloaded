@@ -18,12 +18,16 @@
 
 a{
   color:#333;
-  text-decoration:none
-  
+  text-decoration:none;
+  cursor:pointer;
 }
 
 h3{
   color:#673ab7;
+}
+
+.center{
+  text-align: center;
 }
 
 
@@ -40,4 +44,13 @@ ul.pagination li a {
     float: left;
     padding: 8px 16px;
     text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 4px;
 }
+
+ul.pagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}

@@ -14,6 +14,9 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
   }
   
+  /**
+  * Redirect to the home
+  */
   goToHome() {
     this.router.navigate(['']);
   }

@@ -9,10 +9,14 @@
         </md-toolbar>
         <md-grid-list cols="5" flex>
             <md-grid-tile *ngFor="let movie of movies" >
-                <a href="#/movie/{{ movie.id }}" title="{{ movie.title }}" ng-if="movie.poster_path">
-                    <img class="img" src="{{getUrl(movie.poster_path)}}" layout-fill>
+                <a (click)="goMovie(movie.id)" title="{{ movie.title }}" ng-if="movie.poster_path">
+                    <img  class="img" src="{{getUrl(movie.poster_path)}}">
                 </a>
-                 <md-grid-tile-footer><h3>{{movie.title}}</h3></md-grid-tile-footer>
+                 <md-grid-tile-footer>
+                     <a (click)="goMovie(movie.id)" *ngIf="movie.title">
+                         {{movie.title}}
+                     </a>
+                 </md-grid-tile-footer>
             </md-grid-tile>
           </md-grid-list>
          </md-card-content>

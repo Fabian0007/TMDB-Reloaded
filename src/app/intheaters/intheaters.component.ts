@@ -8,13 +8,16 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./intheaters.component.css']
 })
 export class IntheatersComponent implements OnInit {
-  baseUrl = "http://image.tmdb.org/t/p/w300/";
-  movies = [];
+  baseUrl:string = "http://image.tmdb.org/t/p/w300/";
+  movies:any = [];
   @Input() preview: boolean = false;
 
   constructor(private movieService: MovieService, private route: ActivatedRoute,
   		private router: Router){}
 
+  /**
+  * Get the movies in theaters
+  */
   ngOnInit(){
     this.movieService.getPopular()
       .subscribe(movies => {
@@ -32,12 +35,26 @@ export class IntheatersComponent implements OnInit {
       });
   }
 
+
+  /**
+  * Get the Total Url of image
+  * @param {String} Src of image
+  * @return {String} Total Url of image
+  */
   getUrl(src: string): string {
     return `${this.baseUrl}${src}`;
   }
   
+   href="#/movie/{{ movie.id }}"
+  
+  /**
+  * Redirect to Intheaters component in total window
+  */
   goInTheaters() {
     this.router.navigate(['/intheaters']);
   }
   
+  goMovie(id:number) {
+    this.router.navigate(['/movie/'+id]);
+  }
 }

@@ -36,4 +36,8 @@ export class PopularmoviesComponent implements OnInit {
     this.router.navigate(['/popularmovies']);
   }
   
+  goMovie(id:number) {
+    this.router.navigate(['/movie/'+id]);
+  }
+  
 }

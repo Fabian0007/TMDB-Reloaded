@@ -28,32 +28,32 @@
             <div *ngFor="let credit of credits">
                 <md-grid-tile>
                     <md-grid-tile-header>
-                            <a href="#/movie/{{ credit.id }}" *ngIf="credit.title">
+                            <a (click)="goMovie(credit.id)" *ngIf="credit.title">
                                  {{credit.title}}
                             </a>
                     </md-grid-tile-header>
                     
-                    <a href="#/movie/{{ credit.id }}" title="{{ credit.title }}" >
+                    <a (click)="goMovie(credit.id)" title="{{ credit.title }}" >
                         <img  class="img" *ngIf="credit.poster_path" src="{{getUrl(credit.poster_path)}}">
                         <img  class="img" *ngIf="!credit.poster_path" src="assets/images/posternotavailable.jpg">
                     </a>
                     <md-grid-tile-footer>
                         <div>
                             <md-icon class="icons">account_box</md-icon>
-                            <a href="#/movie/{{ credit.id }}" *ngIf="credit.job">
+                            <a (click)="goMovie(credit.id)" *ngIf="credit.job">
                                  {{credit.job}}
                             </a>
-                            <a href="#/movie/{{ credit.id }}" *ngIf="!credit.job" class="unavailable">
+                            <a (click)="goMovie(credit.id)" *ngIf="!credit.job" class="unavailable">
                                  Job not available
                             </a>
                         </div>
                         <div style="clear:both; margin:7px" > </div>
                         <div>
                             <md-icon class="icons">visibility</md-icon>
-                            <a href="#/movie/{{ credit.id }}" *ngIf="credit.release_date">
+                            <a (click)="goMovie(credit.id)" *ngIf="credit.release_date">
                                  {{credit.release_date.split("-")[0]}}
                             </a>
-                            <a href="#/movie/{{ credit.id }}" *ngIf="!credit.release_date" class="unavailable">
+                            <a (click)="goMovie(credit.id)" *ngIf="!credit.release_date" class="unavailable">
                                  Unavailable
                             </a>
                         </div>

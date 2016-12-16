@@ -11,7 +11,7 @@
 <div (mouseleave)="changeState(false)" (mouseover)="changeState(true)">
     <div [hidden]="!((resultsPersons.length> 0 || resultsMovies.length > 0) && (active || focus))" class="pull-right" >
         <div *ngFor="let result of resultsPersons; let i = index;">
-            <a href="#/person/{{ result.id }}">
+            <a (click)="goPerson(result.id)">
                 <div class="results" [ngStyle]="{'background-color': colorsPersons[i]}" (mouseleave)="removeColorPersons(i)" (mouseover)="putColorPersons(i)">
                     <img *ngIf="result.profile_path" src="{{getUrl(result.profile_path)}}" class="autocomplete">
                     <img *ngIf="!result.profile_path" src="assets/images/photonotavailable.jpg"  class="autocomplete">
@@ -20,7 +20,7 @@
             </a>
         </div>
         <div *ngFor="let result of resultsMovies; let i = index;">
-            <a href="#/movie/{{ result.id }}" >
+            <a (click)="goMovie(result.id)" >
                 <div class="results" [ngStyle]="{'background-color': colorsMovies[i]}" (mouseleave)="removeColorMovies(i)" (mouseover)="putColorMovies(i)">
                     <img *ngIf="result.poster_path" src="{{getUrl(result.poster_path)}}"  class="autocomplete">
                     <img *ngIf="!result.poster_path" src="assets/images/posternotavailable.jpg"  class="autocomplete">
@@ -29,7 +29,7 @@
             </a>
         </div>
         <div>
-            <a href="#/searchexpanded/persons/{{ search }}/1" >
+            <a (click)="goExpanded()" >
                 <div class="results" [ngStyle]="{'background-color': color}" (mouseleave)="removeColor()" (mouseover)="putColor()">
                     
                     <h3><md-icon color="primary">search</md-icon>See all results for {{ search }}</h3>

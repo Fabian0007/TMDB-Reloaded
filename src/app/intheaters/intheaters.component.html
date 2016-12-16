@@ -9,11 +9,11 @@
         </md-toolbar>
         <md-grid-list cols="5" class="total" flex>
             <md-grid-tile *ngFor="let movie of movies" >
-                <a href="#/movie/{{ movie.id }}" title="{{ movie.title }}" ng-if="movie.poster_path">
+                <a (click)="goMovie(movie.id)" title="{{ movie.title }}" ng-if="movie.poster_path">
                     <img  class="img" src="{{getUrl(movie.poster_path)}}">
                 </a>
                  <md-grid-tile-footer>
-                     <a href="#/movie/{{ movie.id }}" *ngIf="movie.title">
+                     <a (click)="goMovie(movie.id)" *ngIf="movie.title">
                          {{movie.title}}
                      </a>
                  </md-grid-tile-footer>

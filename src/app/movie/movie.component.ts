@@ -18,6 +18,9 @@ export class MovieComponent implements OnInit {
   		private router: Router){
   		}
 
+  /**
+  * Get a movie with your id
+  */
   ngOnInit(){
     this.route.params.subscribe(params => {
       let id = params['id'];
@@ -28,7 +31,11 @@ export class MovieComponent implements OnInit {
     });
   }
   
-
+  /**
+  * Get the Total Url of image
+  * @param {String} Src of image
+  * @return {String} Total Url of image
+  */
   getUrl(src: string): string {
     return `${this.baseUrl}${src}`;
   }

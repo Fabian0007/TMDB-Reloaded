@@ -28,22 +28,22 @@
             <div *ngFor="let credit of credits">
                 <md-grid-tile >
                     <md-grid-tile-header>
-                        <a href="#/person/{{ credit.id }}" *ngIf="credit.name">
+                        <a (click)="goPerson(credit.id)" *ngIf="credit.name">
                             {{credit.name}}
                         </a>
                     </md-grid-tile-header>                    
                     
-                    <a href="#/person/{{ credit.id }}" title="{{ credit.name }}" >
+                    <a (click)="goPerson(credit.id)" title="{{ credit.name }}" >
                         <img class="img" *ngIf="credit.profile_path" src="{{getUrl(credit.profile_path)}}">
                         <img class="img" *ngIf="!credit.profile_path" src="assets/images/photonotavailable.jpg">
                     </a>
                     <md-grid-tile-footer>
                          <div>
                             <md-icon class="icons">account_box</md-icon>
-                            <a href="#/movie/{{ credit.id }}" *ngIf="credit.character">
+                            <a (click)="goPerson(credit.id)" *ngIf="credit.character">
                                  {{credit.character}}
                             </a>
-                            <a href="#/movie/{{ credit.id }}" *ngIf="!credit.character" class="unavailable">
+                            <a (click)="goPerson(credit.id)" *ngIf="!credit.character" class="unavailable">
                                 Unvailable
                             </a>
                         </div>

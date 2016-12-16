@@ -39,4 +39,8 @@ export class UpcomingComponent implements OnInit {
   goUpComing() {
     this.router.navigate(['/upcoming']);
   }
+  
+  goMovie(id:number) {
+    this.router.navigate(['/movie/'+id]);
+  }
 }

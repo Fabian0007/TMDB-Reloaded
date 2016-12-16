@@ -88,7 +88,7 @@ export class MovieService {
     var request =`${this.url}/search/person?api_key=${this.apiKey}&query=${search}&page=${page}&include_adult=false`;
     return this.http.get(request)
       .map(response => {
-        return response.json().results;
+        return response.json();
       });
   }
   
@@ -100,7 +100,7 @@ export class MovieService {
     var request =`${this.url}/search/movie?api_key=${this.apiKey}&query=${search}&page=${page}&include_adult=false`;
     return this.http.get(request)
       .map(response => {
-        return response.json().results;
+        return response.json();
       });
   }
   
